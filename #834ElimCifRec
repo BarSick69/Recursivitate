@@ -1,0 +1,35 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+int elimcif(int n,int c,int nr_nou);
+int main() {
+    // Write C++ code here
+    cout << "Hello world!";
+    int c=4;
+    int n=2454;
+    n=elimcif(n,c,0);
+    cout<<n;
+    return 0;
+}
+int elimcif(int n,int c,int nr_nou){
+    int cif=n%10;
+    if(n==0){
+        while(nr_nou!=0){
+            cif=nr_nou%10;
+            nr_nou/=10;
+            n*=10;
+            n+=cif;
+        }
+        return n;
+    }
+    if(cif==c){
+        n/=10;
+        elimcif(n,c,nr_nou);
+    }
+    else{
+        n/=10;
+        nr_nou*=10;
+        nr_nou+=cif;
+        elimcif(n,c,nr_nou);
+    }
+}
